@@ -1,26 +1,274 @@
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf7f1;
+  --foreground: #171411;
+  --surface: #f4ebdd;
+  --muted: #75695e;
+  --gold: #a88450;
+  --border: #d9cbbb;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 5px;
+}
+
+.komorebi-header {
+  min-height: 90px;
+  padding: 18px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.komorebi-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.komorebi-brand strong {
+  font-family: Georgia, serif;
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: 5px;
+}
+
+.komorebi-brand small {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.header-detail {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.komorebi-hero {
+  min-height: 640px;
+  padding: 90px 6%;
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.komorebi-hero h1 {
+  margin: 20px 0;
+  font-family: Georgia, serif;
+  font-size: clamp(55px, 7vw, 112px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -4px;
+}
+
+.komorebi-hero h1 em {
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.hero-description {
+  max-width: 470px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.komorebi-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 49px;
+  padding: 14px 22px;
+  border: 1px solid var(--foreground);
+  font-size: 12px;
+  letter-spacing: 1px;
+  transition: background 200ms, color 200ms;
+}
+
+.komorebi-button.primary {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.komorebi-button.secondary {
+  background: transparent;
+}
+
+.komorebi-button:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #171411;
+}
+
+.hero-art {
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px;
+  border: 1px solid #4b3a2b;
+  background:
+    linear-gradient(135deg, #171411d9, #30241dd9),
+    repeating-linear-gradient(
+      90deg,
+      #654b31 0,
+      #654b31 3px,
+      #211a15 3px,
+      #211a15 55px
+    );
+}
+
+.hero-art-inner {
+  width: 100%;
+  min-height: 370px;
+  border: 1px solid #c5a57275;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: #f4ebdd;
+  text-align: center;
+}
+
+.hero-art-kanji {
+  font-family: Georgia, serif;
+  font-size: clamp(52px, 7vw, 88px);
+  letter-spacing: 8px;
+}
+
+.hero-art-inner span:last-child {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #c5a572;
+}
+
+.story-section {
+  padding: 100px 6%;
+  background: var(--surface);
+  text-align: center;
+}
+
+.story-section h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(40px, 5vw, 65px);
+  font-weight: 400;
+  margin: 22px 0;
+}
+
+.story-section p:last-child {
+  margin: auto;
+  max-width: 660px;
+  line-height: 2;
+  color: var(--muted);
+}
+
+.komorebi-footer {
+  padding: 35px 6%;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+@media (max-width: 800px) {
+  .komorebi-hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 70px;
+  }
+
+  .hero-art {
+    min-height: 350px;
+  }
+
+  .hero-art-inner {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .komorebi-header {
+    min-height: 75px;
+  }
+
+  .komorebi-brand strong {
+    font-size: 18px;
+    letter-spacing: 3px;
+  }
+
+  .header-detail {
+    font-size: 9px;
+  }
+
+  .komorebi-hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .story-section {
+    padding: 75px 6%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
